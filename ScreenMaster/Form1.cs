@@ -19,23 +19,16 @@ namespace ScreenMaster
         public Bitmap screen;
         public Rectangle bounds;
         public bool isNewBounds = false;
-        //private MemoryStream stream = new MemoryStream();
-        //private FileStream fileStream;
+        private bool isSendServer = false;
         public string path;
         public ImageFormat format;
         public string fileFormat;
         Screenshot scrshot;
+        NetworkClient client;
 
         public Form1()
         {
             InitializeComponent();
-            scrshot = new Screenshot();
-            radioButton1.Checked = true;
-            checkBox1.Text = "Компенсация масштабирования экрана"+"\n" + "(экспериментальная функция)";
-            path = "C:\\Users\\Cyfralus\\Documents\\Visual Studio 2015\\Projects\\ScreenMaster\\ScreenMaster\\bin\\Debug\\picture";
-            textBoxPath.Text = path;
-            bounds = Screen.PrimaryScreen.Bounds;
-            comboBoxCase.SelectedIndex = 0;
         }
 
         private void buttonPath_Click(object sender, EventArgs e)
@@ -55,12 +48,15 @@ namespace ScreenMaster
         {
             if (comboBoxCase.SelectedIndex == 0)
             {
+                //MakeImage(this, bounds.Location, bounds);
                 if (isNewBounds)
                     bounds = scrshot.GetNewBounds(bounds);
                 Hide();
                 Thread.Sleep(500);
-                screen = scrshot.MakeScreenshot(bounds);
+                screen = scrshot.MakeScreenshot(bounds, bounds.Location);
                 Show();
+                if (isSendServer)
+                    client.SendImage(screen);
                 screen.Save(path + fileFormat, format);
             }
             else
@@ -81,6 +77,17 @@ namespace ScreenMaster
             ////stream.Close();
             ////}
         }
+
+        //public void MakeImage(Form form, Point location, Rectangle bounds)
+        //{
+        //    if (isNewBounds)
+        //        bounds = scrshot.GetNewBounds(bounds);
+        //    form.Hide();
+        //    Thread.Sleep(500);
+        //    screen = scrshot.MakeScreenshot(bounds, location);
+        //    form.Show();
+        //    screen.Save(path + fileFormat, format);
+        //}
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -113,6 +120,23 @@ namespace ScreenMaster
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             isNewBounds = checkBox1.Checked;
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            scrshot = new Screenshot();
+            client = new NetworkClient();
+            radioButton1.Checked = true;
+            checkBox1.Text = "Компенсация масштабирования экрана" + "\n" + "(экспериментальная функция)";
+            path = "C:\\Users\\Cyfralus\\Documents\\Visual Studio 2015\\Projects\\ScreenMaster\\ScreenMaster\\bin\\Debug\\picture";
+            textBoxPath.Text = path;
+            bounds = Screen.PrimaryScreen.Bounds;
+            comboBoxCase.SelectedIndex = 0;
+        }
+
+        private void checkBoxSendtoServer_CheckedChanged(object sender, EventArgs e)
+        {
+            isSendServer = checkBoxSendtoServer.Checked;
         }
     }
 }

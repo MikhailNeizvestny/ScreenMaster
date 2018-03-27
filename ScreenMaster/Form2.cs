@@ -23,26 +23,39 @@ namespace ScreenMaster
             this.AllowTransparency = true;
             this.BackColor = Color.AliceBlue;//цвет фона  
             this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
-            bounds = Bounds;
-            form1 = new Form1();
+            //bounds = Bounds;
+            
             scrshot = new Screenshot();
             InitializeComponent();
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
         {
-            if (form1.isNewBounds)
-                bounds = scrshot.GetNewBounds(bounds);
-            Hide();
-            Thread.Sleep(500);
-            form1.screen = scrshot.MakeScreenshot(bounds);
-            Show();
-            form1.screen.Save(form1.path + form1.fileFormat, form1.format);//add file's name
+            //form1 = new Form1();
+            //bounds = Bounds;
+            //form1.MakeImage(this, Location, Bounds);
+            //if (form1.isNewBounds)
+            //    bounds = scrshot.GetNewBounds(bounds);
+            //Hide();
+            //Thread.Sleep(500);
+            //form1.screen = scrshot.MakeScreenshot(bounds, Location);
+            //Show();
+            //form1.screen.Save(form1.path + form1.fileFormat, form1.format);//add file's name
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             form1.Show();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            form1.Show();
+        }
+
+        private void Form2_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

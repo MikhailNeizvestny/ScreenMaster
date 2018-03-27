@@ -15,11 +15,11 @@ namespace ScreenMaster
         public Screenshot()
         { }
 
-        public Bitmap MakeScreenshot(Rectangle bounds)
+        public Bitmap MakeScreenshot(Rectangle bounds, Point location)
         {
             screen = new Bitmap(bounds.Width, bounds.Height);
             Graphics graphic = Graphics.FromImage(screen);
-            graphic.CopyFromScreen(bounds.X, bounds.Y, 0, 0, bounds.Size);
+            graphic.CopyFromScreen(location.X, location.Y, 0, 0, bounds.Size);
             return screen;
         }
 
