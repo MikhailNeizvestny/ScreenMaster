@@ -104,7 +104,7 @@ namespace ScreenMaster
             {
                 currentTime += "_" + unit;
             }
-            currentDate = date[0] + currentTime;
+            currentDate = date[0] + currentTime + ".";
             return currentDate;
         }
 
@@ -118,19 +118,19 @@ namespace ScreenMaster
                 {
                     case "PNG":
                         format = ImageFormat.Png;
-                        fileFormat = ".png";
+                        fileFormat = "png";
                         break;
                     case "JPEG":
                         format = ImageFormat.Jpeg;
-                        fileFormat = ".jpeg";
+                        fileFormat = "jpeg";
                         break;
                     case "BMP":
                         format = ImageFormat.Bmp;
-                        fileFormat = ".bmp";
+                        fileFormat = "bmp";
                         break;
                     case "GIF":
                         format = ImageFormat.Png;
-                        fileFormat = ".gif";
+                        fileFormat = "gif";
                         break;
                 }
             }
