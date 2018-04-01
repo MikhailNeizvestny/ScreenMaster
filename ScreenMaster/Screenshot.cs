@@ -32,6 +32,15 @@ namespace ScreenMaster
             return rect;
         }
 
+        public Point GetNewLocation(Point location)
+        {
+            double coef = GetSystemDpi();
+            int x = (int)Math.Round(location.X * coef);
+            int y = (int)Math.Round(location.Y * coef);
+            Point point = new Point(x, y);
+            return point;
+        }
+
         private static double GetSystemDpi()
         {
             using (Graphics screen = Graphics.FromHwnd(IntPtr.Zero))

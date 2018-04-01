@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonScreen = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonScreen
@@ -42,11 +43,23 @@
             this.buttonScreen.UseVisualStyleBackColor = true;
             this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(195, 218);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonScreen);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -59,5 +72,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonScreen;
+        private System.Windows.Forms.Button button1;
     }
 }

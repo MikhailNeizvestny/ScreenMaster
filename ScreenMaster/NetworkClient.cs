@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ScreenMaster
 {
@@ -23,6 +24,7 @@ namespace ScreenMaster
         public void SendImage(Bitmap image)
         {
             Connect();
+
             if (client.Connected)
             {
                 mainStream = client.GetStream();
@@ -40,7 +42,7 @@ namespace ScreenMaster
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Не удается подключиться к серверу\nПроверьте подключение");
             }
         }
     }

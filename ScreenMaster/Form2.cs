@@ -16,24 +16,21 @@ namespace ScreenMaster
     {
         Form1 form1;
         Screenshot scrshot;
-        Rectangle bounds;
         public Form2()
         {
             //this.FormBorderStyle = FormBorderStyle.None;
             this.AllowTransparency = true;
             this.BackColor = Color.AliceBlue;//цвет фона  
             this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
-            //bounds = Bounds;
-            
             scrshot = new Screenshot();
             InitializeComponent();
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
         {
-            //form1 = new Form1();
+            //Form1 form1 = this.Owner as Form1;
             //bounds = Bounds;
-            //form1.MakeImage(this, Location, Bounds);
+            form1.MakeImage(this, Location, Bounds);
             //if (form1.isNewBounds)
             //    bounds = scrshot.GetNewBounds(bounds);
             //Hide();
@@ -50,12 +47,17 @@ namespace ScreenMaster
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if(form1 != null)
             form1.Show();
         }
 
         private void Form2_Shown(object sender, EventArgs e)
         {
+            form1 = this.Owner as Form1;
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

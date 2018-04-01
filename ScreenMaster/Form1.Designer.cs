@@ -42,8 +42,8 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.comboBoxCase = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBoxSendtoServer = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,6 +64,7 @@
             // 
             this.textBoxPath.Location = new System.Drawing.Point(6, 6);
             this.textBoxPath.Name = "textBoxPath";
+            this.textBoxPath.ReadOnly = true;
             this.textBoxPath.Size = new System.Drawing.Size(442, 22);
             this.textBoxPath.TabIndex = 1;
             // 
@@ -99,7 +100,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(522, 281);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Скриншот";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -205,17 +206,6 @@
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 89);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(294, 21);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Компенсация масштабирования экрана";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // checkBoxSendtoServer
             // 
             this.checkBoxSendtoServer.AutoSize = true;
@@ -227,6 +217,17 @@
             this.checkBoxSendtoServer.UseVisualStyleBackColor = true;
             this.checkBoxSendtoServer.CheckedChanged += new System.EventHandler(this.checkBoxSendtoServer_CheckedChanged);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 89);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(294, 21);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Компенсация масштабирования экрана";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,6 +236,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
