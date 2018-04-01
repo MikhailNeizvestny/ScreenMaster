@@ -58,7 +58,7 @@ namespace ScreenMaster
         }
 
         private void SendName(string name)
-        {
+        { 
             if (client.Connected)
             {
                 mainStream = client.GetStream();
