@@ -16,6 +16,7 @@ namespace ScreenMaster
     {
         Form1 form1;
         Screenshot scrshot;
+
         public Form2()
         {
             this.FormBorderStyle = FormBorderStyle.None;
@@ -37,6 +38,17 @@ namespace ScreenMaster
 
                 return cp;
             }
+        }
+
+        const int WM_NCHITTEST = 0x84;
+        const int HTCAPTION = 2;
+        const int HTCLIENT = 1;
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)
+                m.Result = (IntPtr)HTCAPTION;
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
@@ -77,10 +89,10 @@ namespace ScreenMaster
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Size = new Size(this.PointToClient(MousePosition).X, this.PointToClient(MousePosition).Y);
-            }
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    this.Size = new Size(this.PointToClient(MousePosition).X, this.PointToClient(MousePosition).Y);
+            //}
         }
     }
 }
