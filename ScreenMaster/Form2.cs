@@ -18,12 +18,25 @@ namespace ScreenMaster
         Screenshot scrshot;
         public Form2()
         {
-            //this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.AllowTransparency = true;
             this.BackColor = Color.AliceBlue;//цвет фона  
             this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
             scrshot = new Screenshot();
             InitializeComponent();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int WS_SIZEBOX = 0x40000;
+
+                var cp = base.CreateParams;
+                cp.Style |= WS_SIZEBOX;
+
+                return cp;
+            }
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
@@ -47,8 +60,7 @@ namespace ScreenMaster
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(form1 != null)
-            form1.Show();
+            
         }
 
         private void Form2_Shown(object sender, EventArgs e)
@@ -58,6 +70,17 @@ namespace ScreenMaster
 
         private void button1_Click(object sender, EventArgs e)
         {
+            form1.FormClose();
+            if (form1 != null)
+                form1.Show();
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Size = new Size(this.PointToClient(MousePosition).X, this.PointToClient(MousePosition).Y);
+            }
         }
     }
 }

@@ -44,6 +44,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxSendtoServer = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBoxLink = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonCopyLink = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -56,7 +59,7 @@
             this.buttonScreen.Name = "buttonScreen";
             this.buttonScreen.Size = new System.Drawing.Size(129, 23);
             this.buttonScreen.TabIndex = 0;
-            this.buttonScreen.Text = "Screen";
+            this.buttonScreen.Text = "Снимок";
             this.buttonScreen.UseVisualStyleBackColor = true;
             this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
             // 
@@ -74,7 +77,7 @@
             this.buttonPath.Name = "buttonPath";
             this.buttonPath.Size = new System.Drawing.Size(128, 23);
             this.buttonPath.TabIndex = 2;
-            this.buttonPath.Text = "Select";
+            this.buttonPath.Text = "Выбрать";
             this.buttonPath.UseVisualStyleBackColor = true;
             this.buttonPath.Click += new System.EventHandler(this.buttonPath_Click);
             // 
@@ -90,6 +93,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonCopyLink);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.textBoxLink);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.panel1);
@@ -228,6 +234,33 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // textBoxLink
+            // 
+            this.textBoxLink.Location = new System.Drawing.Point(293, 138);
+            this.textBoxLink.Name = "textBoxLink";
+            this.textBoxLink.ReadOnly = true;
+            this.textBoxLink.Size = new System.Drawing.Size(226, 22);
+            this.textBoxLink.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(290, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Ссылка";
+            // 
+            // buttonCopyLink
+            // 
+            this.buttonCopyLink.Location = new System.Drawing.Point(293, 175);
+            this.buttonCopyLink.Name = "buttonCopyLink";
+            this.buttonCopyLink.Size = new System.Drawing.Size(124, 25);
+            this.buttonCopyLink.TabIndex = 8;
+            this.buttonCopyLink.Text = "Скопировать";
+            this.buttonCopyLink.UseVisualStyleBackColor = true;
+            this.buttonCopyLink.Click += new System.EventHandler(this.buttonCopyLink_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,6 +300,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBoxSendtoServer;
+        private System.Windows.Forms.TextBox textBoxLink;
+        private System.Windows.Forms.Button buttonCopyLink;
+        private System.Windows.Forms.Label label3;
     }
 }
 

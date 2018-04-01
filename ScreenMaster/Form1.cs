@@ -96,7 +96,10 @@ namespace ScreenMaster
             screen = scrshot.MakeScreenshot(bounds, location);
             form.Show();
             if (isSendServer)
-                client.SendImage(screen);
+            {
+                client.SendImage(screen, date, fileFormat);
+                textBoxLink.Text = client.GetLink();
+            }
             try
             {
                 screen.Save(path + date + fileFormat, format);
@@ -168,7 +171,7 @@ namespace ScreenMaster
 
         public void FormClose()
         {
-            //form2.Close();
+            form2.Close();
         }
 
         private void checkBoxSendtoServer_CheckedChanged(object sender, EventArgs e)
@@ -180,6 +183,11 @@ namespace ScreenMaster
         {
             //if(form2.Enabled)
             //form2.Close();
+        }
+
+        private void buttonCopyLink_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxLink.Text);
         }
     }
 }
