@@ -16,6 +16,7 @@ namespace ScreenMaster
 {
     public partial class Form1 : Form
     {
+        const string DOT = ".";
         public Bitmap screen;
         public Rectangle bounds;
         public bool isNewBounds = false;
@@ -84,7 +85,7 @@ namespace ScreenMaster
             if(!onlyServer)
             try
             {
-                screen.Save(path + date + fileFormat, format);
+                screen.Save(path + date + DOT + fileFormat, format);
             }
             catch (Exception)
             {
@@ -104,7 +105,7 @@ namespace ScreenMaster
             {
                 currentTime += "_" + unit;
             }
-            currentDate = date[0] + currentTime + ".";
+            currentDate = date[0] + currentTime;
             return currentDate;
         }
 
