@@ -37,8 +37,6 @@ namespace ScreenMaster
                 SendImage(image);
                 SendName(name);
                 SendFormat(format);
-                //mainStream = client.GetStream();
-                //binFormater.Serialize(mainStream, image);
                 TakeLink();
             }
             client.Close();

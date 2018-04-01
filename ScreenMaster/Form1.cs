@@ -20,6 +20,7 @@ namespace ScreenMaster
         public Rectangle bounds;
         public bool isNewBounds = false;
         private bool isSendServer = false;
+        private bool onlyServer = false;
         public string path;
         string date;
         public ImageFormat format;
@@ -33,8 +34,6 @@ namespace ScreenMaster
             scrshot = new Screenshot();
             client = new NetworkClient();
             InitializeComponent();
-            //form2 = new Form2();
-            //form2.Owner = this;
         }
 
         private void buttonPath_Click(object sender, EventArgs e)
@@ -54,13 +53,6 @@ namespace ScreenMaster
             if (comboBoxCase.SelectedIndex == 0)
             {
                 MakeImage(this, bounds.Location, bounds);
-                //if (isNewBounds)
-                //    bounds = scrshot.GetNewBounds(bounds);
-                //Hide();
-                //Thread.Sleep(500);
-                //screen = scrshot.MakeScreenshot(bounds, bounds.Location);
-                //Show();
-                //screen.Save(path + fileFormat, format);
             }
             else
             {
@@ -69,17 +61,6 @@ namespace ScreenMaster
                 form2.Show();
                 this.Hide();
             }
-
-
-            //fileStream = new FileStream(path, FileMode.Create);
-            ////using (fileStream = File.Create(path, (int)stream.Length))
-            ////{
-            //byte[] data = new byte[stream.Length];
-            //stream.Read(data, 0, data.Length);
-            //fileStream.Write(data, 0, data.Length);
-            //fileStream.Close();
-            ////stream.Close();
-            ////}
         }
 
         public void MakeImage(Form form, Point location, Rectangle bounds)
@@ -100,6 +81,7 @@ namespace ScreenMaster
                 client.SendImage(screen, date, fileFormat);
                 textBoxLink.Text = client.GetLink();
             }
+            if(!onlyServer)
             try
             {
                 screen.Save(path + date + fileFormat, format);
@@ -176,18 +158,25 @@ namespace ScreenMaster
 
         private void checkBoxSendtoServer_CheckedChanged(object sender, EventArgs e)
         {
+            if (onlyServer && !checkBoxSendtoServer.Checked)
+                checkBoxSendtoServer.Checked = true;
             isSendServer = checkBoxSendtoServer.Checked;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //if(form2.Enabled)
-            //form2.Close();
         }
 
         private void buttonCopyLink_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textBoxLink.Text);
+        }
+
+        private void checkBoxOnlyServer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxOnlyServer.Checked)
+                checkBoxSendtoServer.Checked = true;
+            onlyServer = checkBoxOnlyServer.Checked;
         }
     }
 }
